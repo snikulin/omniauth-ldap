@@ -74,10 +74,10 @@ module OmniAuth
             method = args[:method] || @method
             password = password.call if password.respond_to?(:call)
             if method == 'sasl'
-            result = rs.first if me.bind(sasl_auths({:username => dn, :password => password}).first)
+              result = rs.first if me.bind(sasl_auths({:username => dn, :password => password}).first)
             else
-            result = rs.first if me.bind(:method => :simple, :username => dn,
-                                :password => password)
+              result = rs.first if me.bind(:method => :simple, :username => dn,
+                                :password => password).result[:resultCode] == 0
             end
           end
         end
