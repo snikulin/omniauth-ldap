@@ -40,8 +40,8 @@ module OmniAuth
 
         raise MissingCredentialsError.new("Missing login credentials") if request['username'].nil? || request['password'].nil?
         begin
-          return fail!(:invalid_credentials) request['password'].empty?
-          
+          return fail!(:invalid_credentials) if request['password'].empty?
+
           @ldap_user_info = @adaptor.bind_as(:filter => Net::LDAP::Filter.eq(@adaptor.uid, @options[:name_proc].call(request['username'])),:size => 1, :password => request['password'])
           return fail!(:invalid_credentials) if !@ldap_user_info
 
