@@ -35,7 +35,7 @@ GEM
       hashie (~> 1.2)
       rack
     pyu-ruby-sasl (0.0.3.3)
-    rack (1.4.1)
+    rack (2.2.3)
     rack-test (0.6.1)
       rack (>= 1.0)
     rb-fsevent (0.9.1)
